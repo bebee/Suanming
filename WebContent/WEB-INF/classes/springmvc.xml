@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<!-- 启用Spring基于annotation的DI, 使用户可以在Spring MVC中使用Spring的强大功能。 激活 @Required 
+		@Autowired,JSR 250's @PostConstruct, @PreDestroy and @Resource 等标注 -->
+	<context:annotation-config />
+		<!--配置注解 -->
+	<mvc:annotation-driven />
+	<!-- 配置自动扫描的包 controller-->
+	<context:component-scan base-package="com.suanming.controller"
+		use-default-filters="false">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" /><!--include包括的包 -->
+		<context:include-filter type="annotation"
+			expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+	</context:component-scan>
+	<!-- 配置自动扫描的包 -->
+	<!-- <context:component-scan base-package="com.suanming.*"></context:component-scan> -->
+	 <!--配置websocket相关扫描 -->
+	
+	<!-- 配置entity相关扫描 -->
+	<context:component-scan base-package="com.suanming.entity"></context:component-scan>
+	<!--配置dao相关扫描 -->
+	<context:component-scan base-package="com.suanming.dao"></context:component-scan>
+	<!-- 配置daoimpl相关扫描 -->
+	<context:component-scan base-package="com.suanming.daoimpl"></context:component-scan>
+	<!-- 配置Service相关扫描 -->
+	<context:component-scan base-package="com.suanming.service"></context:component-scan>
+	<!-- 配置Serviceimpl相关扫描 -->
+	<context:component-scan base-package="com.suanming.serviceimpl"></context:component-scan>
+	
+
+	
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
+	<!-- 静态资源处理， css， js， imgs -->
+	<mvc:resources mapping="/images/**" location="/images/" />
+	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/font/**" location="/font/" />
+	<mvc:resources mapping="/js/**" location="/js/" />
+	<!-- 配置视图解析器 -->
+	<!-- 配置ViewResolver。 可以用多个ViewResolver。 使用order属性排序。 InternalResourceViewResolver放在最后。 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+</beans>

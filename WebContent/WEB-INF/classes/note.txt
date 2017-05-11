@@ -1,0 +1,94 @@
+(1) entity 包 ： 放置项目中的实体类（一个表一个类）,pojo
+
+(2) util 工具包： 各种工具类（StringHelper类）
+
+----M-----
+
+(3) dao 接口包： 各种操作接口类（ICRM_UserDao）
+
+(4) dao.impl 实现接口包：各种实习操作接口的实现类（CRM_UserDaoImpl）
+
+(5) service 接口包： 业务实现的接口（ICRM_UserService）
+
+（6）service.impl 实现业务接口的实现类（CRM_UserServiceImpl）
+
+(7) controller 包 ： 控制器实现类（CRM_UserController） (C)
+
+(8) config (不是文件夹，是个资源包) 放SpringMVC 和 hibernate的配置文件的
+
+
+架构项目包之间的引用关系：
+
+ 请求-->controller--> service 包 ---> dao 包 ---> db 
+ 
+ 
+ (1) 下载  SpringMVC和 Hibernate 框架： Spring框架和SpringMVC框架，他们是天然集成。
+ 
+ SpringMVC 官网：http://projects.spring.io/spring-framework/
+
+下载地址：http://repo.spring.io/release/org/springframework/spring/4.2.2.RELEASE/
+
+
+仅下载：
+
+spring-framework-4.2.2.RELEASE-dist.zip     
+
+spring-framework-4.2.2.RELEASE-docs.zip       
+
+spring-framework-4.2.2.RELEASE-schema.zip          
+
+Hibernate官网：http://hibernate.org/orm/
+
+在线安装SpringMVC插件：（STS）http://dist.springsource.com/release/TOOLS/update/e4.4/
+
+在线安装Hibernate Tools 插件
+
+http://tools.jboss.org/downloads/jbosstools/kepler/4.1.2.Final.html
+
+
+（2） 导入SSH框架整合的jar包：
+
+    2.1 导入SpringMVC的jar包：
+    2.2 导入Hibernate 的jar包；
+    2.3 导入三方依赖的包
+    2.4 mysql 驱动包
+ 
+ （3） 配置 web.xml
+ 
+    3.1   配置 Spring 的 IOC 	容器；
+    3.2 配置 SpirngMVC 的控制器（Servlet）
+    3.3 配置 HiddenHttpMethodFilter（为了实现REST）
+ 
+ 
+ (4) 配置 SpringMVC 配置
+ 
+     4.1 导入命名空间；
+     4.2 配置扫描的包；
+     4.3 配置视图解析器
+     4.4 配置静态资源
+     4.5 注解
+     
+  （5） 配置 Spring 
+  
+     5.1 导入命名空间；
+     5.2 配置自动扫描的包；
+     5.3 配置数据源
+     5.4 配置 dataSource
+     5.5 整合Hibernate
+         
+         5.5.1 配置 SessionFactory
+         5.5.2 配置Hibernate 的事务管理器 
+        
+            
+ (6) SSH整合测试
+ 
+      6.1 新建 test 测试包；
+      6.2 新建一个 JUnit 测试类；
+      6.3 测试数据源
+      6.4 测试 SessionFactory 
+      6.5 测试操作数据库表！（session）
+ 
+ 
+ 
+ 
+ 
